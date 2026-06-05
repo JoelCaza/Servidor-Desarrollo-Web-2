@@ -1,6 +1,6 @@
 {
     "scripts": {
-        "start": "node server_express.js"
+        "start": "node api/server_express.js"
     },
     "type": "module",
     "dependencies": {

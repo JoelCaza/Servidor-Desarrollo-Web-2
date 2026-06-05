@@ -1,12 +1,12 @@
 import 'dotenv/config'
 import express from 'express';
-import authRoutes from './routes/auth.js';
-import { loggerDetallado } from './middlewares/avanzado.js';
-import sistemEventos from './events/sistemaEventos.js';
-import productoRoutes from './routes/producto.js';
-import categoriasRoutes from './routes/categoria.js'
-import pedidosRoutes from './routes/pedidos.js';
-import botRoutes from './routes/bot.js';
+import authRoutes from '../routes/auth.js';
+import { loggerDetallado } from '../middlewares/avanzado.js';
+import sistemEventos from '../events/sistemaEventos.js';
+import productoRoutes from '../routes/producto.js';
+import categoriasRoutes from '../routes/categoria.js'
+import pedidosRoutes from '../routes/pedidos.js';
+import botRoutes from '../routes/bot.js';
 import cors from 'cors';
 const app = express();
 

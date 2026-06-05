@@ -1,14 +1,8 @@
 {
-    "builds": [
-        {
-			"src": "server_express.js",
-			"use": "@vercel/node"
-        }
-    ],
-		"routes": [
-        {
-			"src": "/(.*)",
-			"dest": "server_express.js"
-        }
-    ]
+  "rewrites": [
+    {
+      "source": "/(.*)",
+      "destination": "/api/server_express.js"
+    }
+  ]
 }
