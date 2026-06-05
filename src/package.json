@@ -2,6 +2,8 @@
 	"scripts": {
 		"start": "node server_express.js"
 	},
+	
+
 	"type": "module",
 	"dependencies": {
 		"@google/genai": "^2.6.0",
