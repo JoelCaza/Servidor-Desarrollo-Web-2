@@ -12,7 +12,14 @@ export const Productos = () => {
     useEffect(() => {
         const fetchProductos = async () => {
             try {
-                const response = await fetch(`${import.meta.env.VITE_PUBLIC_URL}/productos`);
+                const response = await fetch(`${import.meta.env.VITE_PUBLIC_URL}/productos`, {
+                    method: "GET",
+                    headers: {
+                        "Content-Type": "application/json",
+                        'ngrok-skip-browser-warning': 'true' 
+                    },
+                }
+                );
                 const data = await response.json();
                 setProductos(data.productos);
                 console.log("Productos obtenidos:", data.productos);
@@ -31,7 +38,7 @@ export const Productos = () => {
     return (
         <div className="products-container">
             <header className="products-header">
-                <h1 className="products-title">Explorar Productos</h1>
+                <h1 className="page-title">Explorar Productos</h1>
                 <div className="search-wrapper">
                     <svg className="search-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
                         <circle cx="11" cy="11" r="8"></circle>

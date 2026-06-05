@@ -131,72 +131,64 @@ export const AdminProductos = () => {
 
 
     return (
-        <div>
-            <h1>Gestion De Productos</h1>
-            {mensaje && <p>{mensaje}</p>}
+        <div className="glass-container">
+            <h1 className="page-title">Gestion De Productos</h1>
+            {mensaje && <p className="tech-font" style={{ color: "var(--pastel-pink)", fontWeight: "bold", textAlign: "center" }}>{mensaje}</p>}
           
 
-            <form onSubmit={handleSubmit}>
-              <select name="categoria_id" value={form.categoria_id} onChange={handleChange} required>
+            <form onSubmit={handleSubmit} style={{ display: "flex", flexDirection: "column", gap: "15px", marginBottom: "40px" }}>
+              <select className="input-tech" name="categoria_id" value={form.categoria_id} onChange={handleChange} required>
                 <option value="">------Selecciona una Categoria---------</option>
                 {categorias.map (cat => (
                     <option key={cat.id} value={cat.id}>{cat.nombre}</option>
                 ))}
             </select>
 
-            <br />
-            <br />
-            <input type="text" name="nombre" placeholder="Nombre del Producto" value={form.nombre} onChange={handleChange}  required/>
-            <br />
-            <br />
-            <input type="text" name="descripcion" placeholder="Ingresa la Descripcion" value={form.descripcion} onChange={handleChange} required/>
-            <br />
-            <br />
-            <input type="number" name="precio" step="0.01" placeholder="Ingresa el precio" value={form.precio} onChange={handleChange} required/>
-            <br />
-            <br />
-            <input type="number" name="stock" placeholder="Stock" value={form.stock} onChange={handleChange} required/>
-            <br />
-            <br />
+            <input className="input-tech" type="text" name="nombre" placeholder="Nombre del Producto" value={form.nombre} onChange={handleChange}  required/>
+            <input className="input-tech" type="text" name="descripcion" placeholder="Ingresa la Descripcion" value={form.descripcion} onChange={handleChange} required/>
+            <div style={{ display: "flex", gap: "15px" }}>
+                <input className="input-tech" type="number" name="precio" step="0.01" placeholder="Ingresa el precio" value={form.precio} onChange={handleChange} required/>
+                <input className="input-tech" type="number" name="stock" placeholder="Stock" value={form.stock} onChange={handleChange} required/>
+            </div>
 
-            <button type="submit">
+            <button type="submit" className="btn-tech btn-tech-primary" style={{ alignSelf: "flex-end" }}>
                 {editandoId ? "Actualizar Producto" : "Guardar Producto"}
             </button>
 
             </form>
 
-            <h2>Listado de Productos</h2>
-            <table border="1">
-                <thead>
-                    <tr>
-                        <th>Nombre</th>
-                        <th>Categoria</th>
-                        <th>Stock</th>
-                        <th>Acciones</th>
-                    </tr>
-                </thead>
-                <tbody>
-                    {productos.map((prod) => (
-                    <tr key={prod.id} style={{ width: "200px" }}>
-                         <td>{prod.nombre}</td>
-                        <td>{prod.categoria}</td>
-                        <td>{prod.stock}</td>
-                        <td>
-                         <button onClick={() => handleEditar(prod)}>
-                            Editar
-
-                         </button>
-                         <button onClick={() => handleEliminar(prod.id)}>
-                            Eliminar
-                         </button>
-                        </td>
-                    
-                    </tr>
-                ))}
-
-                </tbody>
-
-            </table>
+            <h2 className="tech-font" style={{ color: "#2c5282", marginBottom: "15px" }}>Listado de Productos</h2>
+            <div style={{ overflowX: "auto" }}>
+                <table>
+                    <thead>
+                        <tr>
+                            <th>Nombre</th>
+                            <th>Categoria</th>
+                            <th>Stock</th>
+                            <th>Acciones</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        {productos.map((prod) => (
+                        <tr key={prod.id}>
+                             <td><strong>{prod.nombre}</strong></td>
+                            <td><span style={{ background: "rgba(255,255,255,0.6)", padding: "4px 8px", borderRadius: "8px", fontSize: "0.85rem" }}>{prod.categoria}</span></td>
+                            <td className="tech-font">{prod.stock}</td>
+                            <td>
+                             <div style={{ display: "flex", gap: "10px" }}>
+                                 <button className="btn-tech" style={{ padding: "6px 12px", fontSize: "0.75rem", borderColor: "var(--pastel-blue)" }} onClick={() => handleEditar(prod)}>
+                                    Editar
+                                 </button>
+                                 <button className="btn-tech" style={{ padding: "6px 12px", fontSize: "0.75rem", borderColor: "var(--error)", color: "var(--error)", boxShadow: "2px 2px 0 var(--error)" }} onClick={() => handleEliminar(prod.id)}>
+                                    Eliminar
+                                 </button>
+                             </div>
+                            </td>
+                        </tr>
+                    ))}
+                    </tbody>
+                </table>
+            </div>
         </div>
     )
 }

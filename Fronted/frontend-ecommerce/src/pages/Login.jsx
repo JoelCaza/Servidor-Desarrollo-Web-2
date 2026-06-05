@@ -10,9 +10,6 @@ export const Login = () => {
     const [loading, setLoading] = useState(false);
     const navigate = useNavigate();
 
-    // Use a tech-themed stock video from a CDN for the demonstration
-    const videoSource = "https://assets.mixkit.co/videos/preview/mixkit-abstract-technology-loop-with-glowing-lines-41221-large.mp4";
-
     const handleSubmit = async (e) => {
         e.preventDefault();
         setMensajeExitoso("");
@@ -45,16 +42,6 @@ export const Login = () => {
 
     return (
         <div className="login-container">
-            {/* Background Video */}
-            <video 
-                autoPlay 
-                muted 
-                loop 
-                className="video-bg"
-                playsInline
-            >
-                <source src={videoSource} type="video/mp4" />
-            </video>
             <div className="overlay"></div>
 
             <div className="login-card">

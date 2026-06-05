@@ -1,14 +1,20 @@
 import { Link } from "react-router-dom";
 
-
 export const Home = () => {
     return (
-        <div style={{textAlign:"center"}}>
-            <h1>Bienvenido a Mi Ecommerce</h1>
-            <p>Explora nuestra amplia gama de productos y encuentra lo que necesitas.</p>
-            <Link to="/productos" style={{color:"blue",fontSize:"18px"}}>Ver Productos</Link>
-            <br />
-            <Link to="/mispedidos" style={{color:"purple",fontSize:"18px"}}>Ver Mis Pedidos</Link>
+        <div className="glass-container" style={{textAlign:"center"}}>
+            <h1 className="page-title">Bienvenido a TechCart</h1>
+            <p style={{ fontSize: "1.1rem", marginBottom: "2rem", color: "var(--text-secondary)" }}>
+                Explora nuestra amplia gama de productos y encuentra lo que necesitas en la nueva era digital.
+            </p>
+            <div style={{ display: "flex", justifyContent: "center", gap: "20px" }}>
+                <Link to="/productos">
+                    <button className="btn-tech btn-tech-primary">Ver Productos</button>
+                </Link>
+                <Link to="/mispedidos">
+                    <button className="btn-tech">Mis Pedidos</button>
+                </Link>
+            </div>
         </div>
     )
 }

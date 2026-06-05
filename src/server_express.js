@@ -13,9 +13,9 @@ const app = express();
 const Port = process.env.Port;
 
 app.use(cors({
-    origin: ['http://localhost:5173', 'http://localhost:5174','https://ngrok-free.app','179.49.27.98'], 
+    origin: ['http://localhost:5173', 'http://localhost:5174','https://fbca-179-49-27-98.ngrok-free.app'], 
     methods: ['GET', 'POST', 'PUT', 'DELETE'],
-    allowedHeaders: ['Content-Type', 'Authorization']
+    allowedHeaders: ['Content-Type', 'Authorization','ngrok-skip-browser-warning']
 }));
 
 

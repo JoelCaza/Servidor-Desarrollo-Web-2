@@ -1,9 +1,7 @@
 .products-container {
   min-height: 100vh;
-  background-color: #121212; /* Spotify Dark Background */
-  color: #ffffff;
-  padding: 40px 20px;
-  font-family: 'Inter', system-ui, -apple-system, sans-serif;
+  color: var(--text-primary);
+  padding: 0; /* padding handled by MainLayout content-wrapper */
 }
 
 .products-header {
@@ -13,115 +11,141 @@
   margin-bottom: 40px;
 }
 
-.products-title {
-  font-size: 2.5rem;
-  font-weight: 800;
-  margin-bottom: 24px;
-  letter-spacing: -0.04em;
-}
-
-/* Spotify-style Search Bar */
 .search-wrapper {
   position: relative;
   width: 100%;
-  max-width: 400px;
+  max-width: 500px;
+  animation: floatUp 0.6s ease-out;
+}
+
+@keyframes floatUp {
+  from { opacity: 0; transform: translateY(20px); }
+  to { opacity: 1; transform: translateY(0); }
 }
 
 .search-icon {
   position: absolute;
-  left: 16px;
+  left: 20px;
   top: 50%;
   transform: translateY(-50%);
-  color: #121212;
-  width: 24px;
-  height: 24px;
+  color: var(--pastel-blue);
+  width: 20px;
+  height: 20px;
 }
 
 .search-input {
   width: 100%;
-  padding: 14px 16px 14px 48px;
-  border-radius: 500px; /* Fully rounded pill shape */
-  border: none;
-  background-color: #ffffff;
-  color: #121212;
+  padding: 16px 20px 16px 50px;
+  border-radius: 500px;
+  border: 2px solid var(--card-border);
+  background-color: var(--card-bg);
+  backdrop-filter: var(--glass-blur);
+  -webkit-backdrop-filter: var(--glass-blur);
+  color: var(--text-primary);
   font-size: 1rem;
   font-weight: 500;
-  transition: all 0.2s ease;
+  transition: all 0.3s ease;
+  box-shadow: 0 4px 20px rgba(144, 205, 244, 0.1);
+  font-family: var(--font-main);
 }
 
 .search-input:focus {
   outline: none;
-  box-shadow: 0 0 0 3px rgba(255, 255, 255, 0.3);
+  border-color: var(--pastel-blue);
+  box-shadow: 0 4px 20px rgba(144, 205, 244, 0.3);
+  background-color: #fff;
 }
 
 .search-input::placeholder {
-  color: #555555;
+  color: var(--text-secondary);
 }
 
 /* Grid Layout for Products */
 .products-grid {
   display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
-  gap: 24px;
-  max-width: 1200px;
-  margin: 0 auto;
+  grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
+  gap: 30px;
+  width: 100%;
 }
 
-/* Product Card - Spotify Style */
+/* Product Card - Pastel Tech Style */
 .product-card {
-  background-color: #181818;
-  border-radius: 8px;
-  padding: 16px;
-  transition: background-color 0.3s ease;
+  background-color: var(--card-bg);
+  backdrop-filter: var(--glass-blur);
+  -webkit-backdrop-filter: var(--glass-blur);
+  border-radius: 20px;
+  border: 1px solid var(--card-border);
+  padding: 20px;
+  transition: all 0.3s ease;
   position: relative;
   display: flex;
   flex-direction: column;
   cursor: pointer;
+  box-shadow: var(--glass-shadow);
+  overflow: hidden;
+}
+
+.product-card::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 4px;
+  background: linear-gradient(90deg, var(--pastel-blue), var(--pastel-pink));
+  opacity: 0;
+  transition: opacity 0.3s ease;
 }
 
 .product-card:hover {
-  background-color: #282828;
+  transform: translateY(-8px);
+  box-shadow: 0 12px 40px rgba(144, 205, 244, 0.2);
+}
+
+.product-card:hover::before {
+  opacity: 1;
 }
 
 /* Placeholder for Image */
 .product-image-placeholder {
   width: 100%;
   aspect-ratio: 1 / 1;
-  background: linear-gradient(135deg, #333333, #1e1e1e);
-  border-radius: 6px;
-  margin-bottom: 16px;
+  background: linear-gradient(135deg, rgba(255,255,255,0.8), rgba(214, 188, 250, 0.2));
+  border-radius: 12px;
+  margin-bottom: 20px;
   display: flex;
   align-items: center;
   justify-content: center;
-  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.5);
   position: relative;
   overflow: hidden;
+  border: 1px solid rgba(255,255,255,0.9);
 }
 
 .product-icon {
-  width: 48px;
-  height: 48px;
-  color: #b3b3b3;
+  width: 60px;
+  height: 60px;
+  color: var(--pastel-blue);
+  opacity: 0.7;
 }
 
-/* Floating Action Button (Like Spotify Play Button) */
+/* Floating Action Button */
 .add-to-cart-fab {
   position: absolute;
-  bottom: 8px;
-  right: 8px;
-  width: 48px;
-  height: 48px;
+  bottom: 12px;
+  right: 12px;
+  width: 44px;
+  height: 44px;
   border-radius: 50%;
-  background-color: #1DB954; /* Spotify Green */
-  color: #000000;
-  border: none;
+  background-color: #fff;
+  color: var(--pastel-blue);
+  border: 2px solid var(--pastel-blue);
   display: flex;
   align-items: center;
   justify-content: center;
-  box-shadow: 0 8px 8px rgba(0, 0, 0, 0.3);
+  box-shadow: 0 4px 10px rgba(144, 205, 244, 0.3);
   opacity: 0;
-  transform: translateY(8px);
-  transition: all 0.3s ease;
+  transform: translateY(10px);
+  transition: all 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275);
   cursor: pointer;
   z-index: 2;
 }
@@ -132,34 +156,40 @@
 }
 
 .add-to-cart-fab:hover {
-  background-color: #1ED760;
-  transform: scale(1.05);
+  background-color: var(--pastel-blue);
+  color: #fff;
+  transform: scale(1.1);
 }
 
 .add-to-cart-fab:active {
-  transform: scale(1);
+  transform: scale(0.95);
 }
 
 .add-to-cart-fab:disabled {
-  background-color: #555555;
+  background-color: #e2e8f0;
+  border-color: #cbd5e0;
+  color: #a0aec0;
   cursor: not-allowed;
   opacity: 1;
+  transform: none;
 }
 
 /* Typography */
 .product-category {
   font-size: 0.75rem;
-  color: #b3b3b3;
+  font-family: var(--font-tech);
+  color: var(--pastel-purple);
   text-transform: uppercase;
-  letter-spacing: 0.05em;
-  margin-bottom: 4px;
+  letter-spacing: 0.1em;
+  margin-bottom: 8px;
+  font-weight: bold;
 }
 
 .product-name {
-  font-size: 1rem;
+  font-size: 1.1rem;
   font-weight: 700;
-  color: #ffffff;
-  margin-bottom: 4px;
+  color: #2d3748;
+  margin-bottom: 6px;
   white-space: nowrap;
   overflow: hidden;
   text-overflow: ellipsis;
@@ -167,13 +197,13 @@
 
 .product-description {
   font-size: 0.85rem;
-  color: #b3b3b3;
-  margin-bottom: 12px;
+  color: var(--text-secondary);
+  margin-bottom: 16px;
   display: -webkit-box;
   -webkit-line-clamp: 2;
   -webkit-box-orient: vertical;
   overflow: hidden;
-  line-height: 1.4;
+  line-height: 1.5;
   flex-grow: 1;
 }
 
@@ -182,21 +212,30 @@
   justify-content: space-between;
   align-items: center;
   margin-top: auto;
+  padding-top: 16px;
+  border-top: 1px dashed rgba(214, 188, 250, 0.3);
 }
 
 .product-price {
-  font-size: 1.1rem;
+  font-size: 1.25rem;
+  font-family: var(--font-tech);
   font-weight: 700;
-  color: #ffffff;
+  color: #2c5282;
 }
 
 .product-stock {
   font-size: 0.75rem;
-  color: #b3b3b3;
+  font-family: var(--font-tech);
+  background: var(--pastel-green);
+  color: #22543d;
+  padding: 4px 8px;
+  border-radius: 12px;
+  font-weight: bold;
 }
 
 .product-stock.out-of-stock {
-  color: #e22134;
+  background: var(--error);
+  color: #742a2a;
 }
 
 .details-link {
@@ -207,11 +246,12 @@
 
 .btn-details {
   width: 100%;
-  padding: 8px 16px;
-  border-radius: 500px;
-  border: 1px solid #727272;
-  background: transparent;
-  color: #ffffff;
+  padding: 10px 16px;
+  border-radius: 12px;
+  border: none;
+  background: rgba(144, 205, 244, 0.2);
+  color: #2c5282;
+  font-family: var(--font-tech);
   font-size: 0.85rem;
   font-weight: 700;
   text-transform: uppercase;
@@ -221,6 +261,6 @@
 }
 
 .btn-details:hover {
-  border-color: #ffffff;
-  transform: scale(1.02);
+  background: rgba(144, 205, 244, 0.4);
+  transform: translateY(-2px);
 }

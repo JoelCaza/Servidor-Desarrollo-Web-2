@@ -1,5 +1,6 @@
 import { useState } from "react";
 import { Link } from "react-router-dom";
+import "../styles/Login.css"; // Reuse login styles
 
 export const Register = () => {
 const [name, setName] = useState("");
@@ -15,51 +16,66 @@ const handleSubmit = (e) => {
     alert("Registro exitoso");
 };
 return (
-    <div style={{textAlign:"center"}}>
-        <h1>Registro de Usuario</h1>
-        <form onSubmit={handleSubmit} style={{display:"inline-block",textAlign:"left"}}>
-            <div style={{marginBottom:"10px"}}>
-                <label>Name:</label><br />
-                <input 
-                    type="text"
-                    value={name}
-                    required
-                    onChange={(e) => setName(e.target.value)}
-                    style={{padding:"10px",width:"300px"}}
-                />
-            </div>
-            <div style={{marginBottom:"10px"}}>
-                <label>Email:</label><br />
-                <input
-                    type="email"
-                    value={email}
-                    required
-                    onChange={(e) => setEmail(e.target.value)}
-                    style={{padding:"10px",width:"300px"}}
-                />
-            </div>
-            <div style={{marginBottom:"10px"}}>
-                <label>Password:</label><br />
-                <input
-                    type="password"
-                    value={password}
-                    required
-                    onChange={(e) => setPassword(e.target.value)}
-                    style={{padding:"10px",width:"300px"}}
-                />
-            </div>
-            <button type="submit" style={{padding:"10px 20px",marginTop:"10px"}}>Register</button>
-            <Link to="/Login">
-                <button style={{padding:"10px 20px",marginTop:"10px"}}>
-                    Iniciar Sesión
+    <div className="login-container">
+        <div className="overlay"></div>
+        <div className="login-card">
+            <header className="login-header">
+                <h1>Nuevo Usuario</h1>
+                <p>Terminal de Registro</p>
+            </header>
+            
+            <form onSubmit={handleSubmit}>
+                <div className="form-group">
+                    <label>Nombre / Alias</label>
+                    <input 
+                        type="text"
+                        value={name}
+                        required
+                        onChange={(e) => setName(e.target.value)}
+                        className="login-input"
+                        placeholder="John Doe"
+                    />
+                </div>
+                <div className="form-group">
+                    <label>Identificador / Email</label>
+                    <input
+                        type="email"
+                        value={email}
+                        required
+                        onChange={(e) => setEmail(e.target.value)}
+                        className="login-input"
+                        placeholder="user@techcart.io"
+                    />
+                </div>
+                <div className="form-group">
+                    <label>Protocolo / Contraseña</label>
+                    <input
+                        type="password"
+                        value={password}
+                        required
+                        onChange={(e) => setPassword(e.target.value)}
+                        className="login-input"
+                        placeholder="••••••••"
+                    />
+                </div>
+                <button type="submit" className="btn btn-primary" style={{ marginTop: "10px" }}>
+                    Registrar
                 </button>
-            </Link>
-            <Link to="/" >
-                <button style={{ padding: "10px 20px", marginTop: "10px", background: "gray", color: "white", borderRadius: "5px" }}>
-                    Regresar al Inicio
-                </button>
-            </Link>
-        </form>
+                
+                <div className="divider">
+                    <span>¿Ya tienes cuenta?</span>
+                </div>
+                
+                <Link to="/Login" style={{ textDecoration: 'none' }}>
+                    <button type="button" className="btn btn-secondary">
+                        Iniciar Sesión
+                    </button>
+                </Link>
+                <Link to="/" className="back-link">
+                    [ Regresar al Sistema ]
+                </Link>
+            </form>
+        </div>
     </div>
 )
 }
