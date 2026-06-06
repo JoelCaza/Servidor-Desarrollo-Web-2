@@ -13,7 +13,7 @@ const app = express();
 const Port = process.env.Port;
 
 app.use(cors({
-    origin: ['http://localhost:5173', 'http://localhost:5174','https://servidor-desarrollo-web-2.vercel.app/'], 
+    origin: ['http://localhost:5173', 'http://localhost:5174','https://servidor-desarrollo-web-2.vercel.app/','https://servidor-desarrollo-web-2-3jx1.vercel.app/'], 
     methods: ['GET', 'POST', 'PUT', 'DELETE'],
     allowedHeaders: ['Content-Type', 'Authorization','ngrok-skip-browser-warning']
 }));
